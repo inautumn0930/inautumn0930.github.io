@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NX7TXG6');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+    <title>script test </title>
+
+    <meta charset="UTF-8">
+  		  		<style>
+  			body{padding:20px; margin:0;}
+  			h1{font-size:1em;}
+  			ul li{list-style:none;}
+  			.a_wrapper{border:1px solid #eee;}
+  			.tab:after{content:""; display:block; clear:both;}
+  			.tab li{
+  				float:left;
+  				width:100px;
+  				height:50px;
+  				line-height:50px;
+  				background:#eee;
+  				text-align:center;
+  				margin-right:10px;
+  			}
+
+  			.tab01_contents{
+  				margin:30px;
+  				border:1px dotted #ccc;
+  				padding:20px;
+  				display:none;
+  			}
+  			.stab:after{content:""; display:block; clear:both;}
+  			.stab li{
+  				float:left;
+  				width:130px;
+  				height:50px;
+  				line-height:50px;
+  				background:#eee;
+  				text-align:center;
+  				margin-right:10px;
+  			}
+
+  			.sTabArea{
+  				display:none;
+  			}
+
+  			/* with script */
+  			.a_wrapper[data-view="A"] .aType,
+  			.a_wrapper[data-view="B"] .bType{
+  				display:block;
+  			}  			.a_wrapper[data-view="A"] .aType,
+  			.a_wrapper[data-view="B"] .bType{
+  				display:block;
+  			}
+
+  			.a_wrapper[data-view="A"] li[data-category="A"],
+  			.a_wrapper[data-view="B"] li[data-category="B"]{
+  				background : #ddd;
+  			}
+
+  			.a_wrapper .aType[data-view="AA"] .stabA,
+  			.a_wrapper .aType[data-view="BB"] .stabB,
+  			.a_wrapper .aType[data-view="CC"] .stabC{
+  				display:block;
+  			}
+
+  			.a_wrapper .aType[data-view="AA"] li[data-category="AA"],
+  			.a_wrapper .aType[data-view="BB"] li[data-category="BB"],
+  			.a_wrapper .aType[data-view="CC"] li[data-category="CC"]{
+  				background : #ddd;
+  			}
+
+  		</style>
+
+
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX7TXG6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+  <h1>data set</h1>
+
+  <!-- ÀüÃ¼ ¼½¼Ç -->
+  <section class="a_wrapper" id="tab_component1" data-view="A" data-product="prd0" data-index="0">
+    <h2>TAB CHOICE</h2>
+    <div>
+      <ul class="tab ttpgaclass">
+        <li data-category="A"><a href="">TAB 01</a></li>
+        <li data-category="B"><a href="">TAB 02</a></li>
+      </ul>
+    </div>
+
+
+    <!-- A contents -->
+    <section id="stab_component" class="tab01_contents aType" data-view="AA">
+      <ul class="stab">
+        <li data-category="AA"><a href="" class="ttpgaclass">S TAB 01</a></li>
+        <li data-category="BB"><a href="" class="ttpgaclass">S TAB 02</a></li>
+        <li data-category="CC"><a href="" class="ttpgaclass">STAB 03</a></li>
+      </ul>
+      <div class="sTabArea stabA">
+        <h2>CONTENTS 001</h2>
+        <ul>
+          <li>1111111111</li>
+
+          <li>1111111111</li>
+
+          <li>1111111111</li>
+        </ul>
+      </div>
+
+
+      <!-- s : ÅÇ 01-->
+      <div class="sTabArea stabB">
+        <h2>CONTENTS  002</h2>
+        <ul>
+          <li>22222222222</li>
+                <li>22222222222</li>
+         <li>22222222222</li>
+
+        </ul>
+      </div>
+
+      <!-- s : ÅÇ 01-->
+      <div class="sTabArea stabC">
+        <h2>CONTENTS  003</h2>
+        <ul>
+          <li>3333333333</li>
+           <li>3333333333</li>
+          <li>3333333333</li>
+
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- B contents -->
+    <section class="tab01_contents bType">
+      <h2>TAB CONTENTS 02</h2>
+      <ul>
+        <li>SECOND CONTENTS</li>
+        <li>SECOND CONTENTS</li>
+        <li>SECOND CONTENTS</li>
+
+      </ul>
+    </section>
+  </section>
+
+
+  <script>
+
+    var doc = document;
+    var component1 = doc.getElementById('tab_component1');
+    var tab = document.querySelectorAll('.tab li');
+
+    /* Å« ÅÇ ±¸Çö */
+    for(var i = 0; i < tab.length; i++){
+      tab[i].onclick = function(){
+        component1.dataset.view = this.dataset.category;
+        //console.log(component1.dataset);
+        return false;
+      }
+    }
+
+    /* ÅÇ ¾È¿¡ ÅÇ ±¸Çö */
+    var stab_component = doc.getElementById('stab_component');
+    var stab = doc.querySelectorAll('.stab li');
+    for(var s = 0; s < stab.length; s++){
+      stab[s].onclick = function(){
+        stab_component.dataset.view = this.dataset.category;
+        return false;
+      }
+    }
+
+
+
+    //$.data('.tab' , {'aaa':'bbb':'ccc'});
+  </script>
+
+
+  <style>
+    .imageGallery{
+      border:1px solid #eee;
+      margin-top:20px;
+      padding:20px;
+    }
+    .paging span{display:inline-block; width:30px; height:30px; line-height:30px; border-radius:8px; background:#eee; text-align:center;}
+    .visual_img li{display:none;}
+
+    /* with script */
+    .imageGallery[data-index="0"] .v_01,
+    .imageGallery[data-index="1"] .v_02,
+    .imageGallery[data-index="2"] .v_03,
+    .imageGallery[data-index="3"] .v_04{
+      display:block;
+    }
+  </style>
+
+
+  <section class="imageGallery" id="gallery" data-index="0">
+    <h2>IMAGE GALLERY</h2>
+    <p class="paging">
+      <span data-index="0"><a href="">1</a></span>
+      <span data-index="1"><a href="">2</a></span>
+      <span data-index="2"><a href="">3</a></span>
+      <span data-index="3"><a href="">4</a></span>
+    </p>
+    <ul class="visual_img">
+      <li class="v_01">1</li>
+      <li class="v_02">2</li>
+      <li class="v_03">3</li>
+      <li class="v_04">4</li>
+    </ul>
+
+  </section>
+
+
+  <script>
+    var doc = document;
+    var gallery = doc.getElementById('gallery');
+    var dot_select = doc.querySelectorAll('.paging span');
+    for(var j = 0; j < dot_select.length; j++){
+      dot_select[j].onclick = function(){
+        gallery.dataset.index = this.dataset.index;
+        return false;
+      }
+    }
+  </script>
+
+</body>
+</html>
+
